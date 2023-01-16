@@ -7,7 +7,7 @@ content= [ ['1',' ',' '] , ['2',' ',' '] , ['3',' ',' '] ]
 def reset_plateau():
     for i in range(3):
         for j in range(3):
-            l[i][j]=' '
+            content[i][j]=' '
 
 def afficher_plateau():
     global signe
@@ -18,7 +18,7 @@ def afficher_plateau():
                 background='light gray',
                 relief=tk.FLAT,
                 borderwidth= 5,
-                command=lambda x = i*3+j : changer_signe(x)
+                command = lambda x = i*3+j : changer_signe(x)
 
             )
             bgrid[i][j].grid(row = i, column = j)
@@ -27,7 +27,7 @@ def afficher_plateau():
 
 def changer_signe(x):
     global signe
-    sign_list[x-1]=signe
+    sign_list[x]=signe
     
 
     pass

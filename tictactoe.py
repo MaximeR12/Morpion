@@ -19,7 +19,7 @@ def afficher_plateau_v2():
 
 
 def placer(joueur):
-    print('Joueur ',joueur % 2 + 1,' à vous :\n')
+    print('\nJoueur ',joueur % 2 + 1,' à vous :\n')
 
     afficher_plateau_v2()
 
@@ -84,4 +84,5 @@ def main():
         reset_plateau()
         main()
 
+print("\nBonjour ! Bienvenue dans le morpion, jouez à l'aide des chiffres de votre clavier")
 main()

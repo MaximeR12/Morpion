@@ -1,6 +1,8 @@
 l= [ [' ',' ',' '] , [' ',' ',' '] , [' ',' ',' '] ]
 
 def reset_plateau():
+    """_summary_ : reset the list that contains all the ' '/'X'/'O'/
+    """
     for i in range(3):
         for j in range(3):
             l[i][j]=' '
@@ -8,6 +10,8 @@ def reset_plateau():
 
 
 def afficher_plateau_v2():
+    """_summary_ : print the list content with grid
+    """
     print(f'   {l[0][0]} | {l[0][1]} | {l[0][2]} ')
     print('  -----------')
     print(f'   {l[1][0]} | {l[1][1]} | {l[1][2]} ')
@@ -19,6 +23,11 @@ def afficher_plateau_v2():
 
 
 def placer(joueur):
+    """_summary_ : print "joueur X, à vous", ask the user to chose a case and modifies what's inside this case  
+
+    Args:
+        joueur (int): count for numbers of play %2+1 to get 1/2
+    """
     print('\nJoueur ',joueur % 2 + 1,' à vous :\n')
 
     afficher_plateau_v2()
@@ -47,23 +56,47 @@ def placer(joueur):
 
 
 def victoire_colonne(colonne):
+    """_summary_ : checks if there is 3 same signs in a row
+
+    Args:
+        colonne (int): enter the row to check
+
+    Returns:
+        bool : True if there is 3 in a row, else False
+    """
     return l[0][colonne]==l[1][colonne]==l[2][colonne]!=' '
         
 def victoire_ligne(ligne):
+    """checks if there is 3 same signs in a line
+
+    Returns:
+        bool: True if 3 signs are the same, else False
+    """
     for i in l:
         if i[0]==i[1]==i[2]!=' ':
             return True
 
 def victoire_diagonale():
+    """check the diagonals
+
+    Returns:
+        bool: True is 3 same signs in diagonal, else False
+    """
     verif1=l[0][0]==l[1][1]==l[2][2]!=' '
     verif2=l[2][0]==l[1][1]==l[0][2]!=' '
     return verif1 or verif2
             
-def victoire(joueur):
+def victoire():
+    """check if on of the victoire_... function return True
+
+    Returns:
+        bool: True if victory or draw, False if game can continue
+    """
+    global joueur
     if victoire_diagonale():
         return True
     for i in range(3):
-        if victoire_ligne(i) or victoire_colonne(i):
+        if victoire_ligne() or victoire_colonne(i):
             print('victoire du joueur ',joueur % 2 + 1,' !')
             return True
     if joueur>=10:

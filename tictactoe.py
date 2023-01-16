@@ -66,7 +66,7 @@ def victoire_colonne(colonne):
     """
     return l[0][colonne]==l[1][colonne]==l[2][colonne]!=' '
         
-def victoire_ligne(ligne):
+def victoire_ligne():
     """checks if there is 3 same signs in a line
 
     Returns:
@@ -86,13 +86,12 @@ def victoire_diagonale():
     verif2=l[2][0]==l[1][1]==l[0][2]!=' '
     return verif1 or verif2
             
-def victoire():
+def victoire(joueur):
     """check if on of the victoire_... function return True
 
     Returns:
         bool: True if victory or draw, False if game can continue
     """
-    global joueur
     if victoire_diagonale():
         return True
     for i in range(3):
@@ -104,7 +103,6 @@ def victoire():
         return True
     else:
         return False
-
 
 
 def main():
